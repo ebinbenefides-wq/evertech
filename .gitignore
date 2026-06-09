@@ -1,0 +1,20 @@
+# Secrets & config with credentials — never commit these
+chatbot-config.php
+chatbot-leads.log
+
+# Log files
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# XAMPP / local server
+.htpasswd

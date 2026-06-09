@@ -1,0 +1,142 @@
+.service-inner p{
+    font-size: 18px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.partner-logo-area {
+    margin-top: 90px;
+}
+
+.partner-logo-wrap {
+    margin-bottom: 60px;
+}
+
+
+.partner-logo-wrap img {
+    width: 70%;
+    min-width: 100px;
+}
+
+.single-contact-info {
+   /* min-height: 450px; */
+   min-height: 530px;
+   padding-top: 100px;
+}
+
+.pt_100 {
+    padding-top: 10px !important;
+}
+
+.header-menu .main-menu li .sub-menu li a.master-link{
+    
+}
+
+.header-menu .main-menu li {
+    position: relative;
+    display: inline-block;
+}
+
+.header-menu .main-menu li .sub-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 270px;
+    background: #ffffff;
+    box-shadow: 0 2px 29px rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+    border-radius: 5px;
+    border-top: 3px solid #086ad8;
+    opacity: 0;
+    z-index: 99;
+    visibility: hidden;
+    transition: all 0.3s linear;
+}
+
+.header-menu .main-menu li:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header-menu .main-menu li .sub-menu li {
+    position: relative;
+}
+
+.header-menu .main-menu li .sub-menu li .sub-menu {
+    position: absolute;
+    left: 270px; /* Display the submenu to the left */
+    top: 0;
+    background: #ffffff
+}
+
+.header-menu .main-menu li.service .sub-menu li .menu-icon::after {
+    content: '\f16c';
+    font-family: "flaticon";
+    font-size: 10px;
+    color: red;
+    margin-left: 5px;
+    transition: all 0.3s linear;
+    display: none;
+}
+
+.header-menu .main-menu li.service .sub-menu li .master-link::after {
+    content: '\f16c';
+    font-family: "flaticon";
+    font-size: 10px;
+    color: #94a0b9;
+    margin-left: 5px;
+    transition: all 0.3s linear;
+    transform: rotate(45deg);
+}
+
+.header-menu .main-menu li.service .sub-menu li:hover .master-link::after {
+    color: #086ad8;
+}
+
+.whatsapp-link {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000; /* Ensures it's on top of other content */
+}
+
+.whatsapp-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the image scales correctly */
+}
+
+
+.brand-active .single-brand {
+    display: flex;
+    justify-content: center;  /* Horizontally center the image */
+    align-items: center;      /* Vertically center the image */
+    height: 100%;   
+}
+
+.brand-active .single-brand img {
+    max-width: 70%;          /* Ensure the image doesn't exceed the width of the container */
+    max-height: 70%;         /* Ensure the image doesn't exceed the height of the container */
+    object-fit: contain;      /* Keep the aspect ratio and center the image */
+}
+
+.page-banner-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* This dims the image */
+    z-index: 1; /* Ensures the overlay is above the image */
+}
+
+.page-banner-section.product::before {
+    background-color: transparent;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    display: none;
+}
