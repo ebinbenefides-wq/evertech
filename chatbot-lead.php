@@ -2,10 +2,15 @@
 // EverBot lead capture endpoint — stores visitor name/email/phone collected by the chat widget.
 $config = require __DIR__ . '/chatbot-config.php';
 
-$allowedOrigins = ['https://evertechme.com', 'https://www.evertechme.com'];
+$allowedOrigins = array_values(array_filter([
+    'https://evertechme.com',
+    'https://www.evertechme.com',
+    getenv('CHATBOT_EXTRA_ORIGIN') ?: null,
+]));
 
 function ebLeadIsAllowedOrigin(string $origin, array $allowed): bool {
     if (preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?$#', $origin)) return true;
+    if (preg_match('#^https://[a-z0-9-]+\.up\.railway\.app$#', $origin)) return true;
     return in_array($origin, $allowed, true);
 }
 
@@ -60,7 +65,7 @@ $line = sprintf(
     $_SERVER['REMOTE_ADDR'] ?? '-'
 );
 
-@file_put_contents(__DIR__ . '/chatbot-leads.log', $line, FILE_APPEND | LOCK_EX);
+@file_put_contents($config['log_path'], $line, FILE_APPEND | LOCK_EX);
 
 if (!empty($config['lead_notify_email'])) {
     @mail(

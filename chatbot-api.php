@@ -3,15 +3,16 @@
 $config = require __DIR__ . '/chatbot-config.php';
 
 // ─── Allowed origins ─────────────────────────────────────────────────────────
-$allowedOrigins = [
+$allowedOrigins = array_values(array_filter([
     'https://evertechme.com',
     'https://www.evertechme.com',
-];
+    getenv('CHATBOT_EXTRA_ORIGIN') ?: null,
+]));
 
 function isAllowedOrigin(string $origin): bool {
     global $allowedOrigins;
-    // Always allow localhost / 127.0.0.1 for local development
     if (preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?$#', $origin)) return true;
+    if (preg_match('#^https://[a-z0-9-]+\.up\.railway\.app$#', $origin)) return true;
     return in_array($origin, $allowedOrigins, true);
 }
 

@@ -64,7 +64,11 @@ if (!isset($ebLeadUrl)) $ebLeadUrl = 'chatbot-lead.php';
 .eb-navbtn{flex:1;padding:9px 0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:500;color:#94a3b8;background:none;border:none;cursor:pointer;transition:color .15s;font:inherit}
 .eb-navbtn.active{color:#7141B1}
 .eb-navbtn svg{width:18px;height:18px}
-@media (max-width:420px){#eb-win{width:92vw;right:-12px}}
+@media (max-width:480px){
+  #eb-widget{bottom:16px;right:12px}
+  #eb-win{width:calc(100vw - 24px);right:-12px;height:min(520px,calc(100dvh - 90px));bottom:65px}
+  #eb-toggle{width:50px;height:50px}
+}
 </style>
 
 <div id="eb-widget">
