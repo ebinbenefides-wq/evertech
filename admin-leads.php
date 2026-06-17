@@ -1,5 +1,8 @@
 <?php
-$config   = require __DIR__ . '/chatbot-config.php';
+$config = file_exists(__DIR__ . '/chatbot-config.php')
+    ? require __DIR__ . '/chatbot-config.php'
+    : [];
+$config['log_path'] = (getenv('LEADS_LOG_DIR') ?: __DIR__) . '/chatbot-leads.log';
 // Simple lead viewer — protect with a password
 $password = 'evertech2024'; // Change this!
 session_start();

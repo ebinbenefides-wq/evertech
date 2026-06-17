@@ -1,6 +1,11 @@
 <?php
 // ─── Load config ────────────────────────────────────────────────────────────
-$config = require __DIR__ . '/chatbot-config.php';
+$config = file_exists(__DIR__ . '/chatbot-config.php')
+    ? require __DIR__ . '/chatbot-config.php'
+    : [];
+$config['api_key']      = getenv('ANTHROPIC_API_KEY')   ?: ($config['api_key']      ?? '');
+$config['max_per_hour'] = (int)(getenv('MAX_PER_HOUR')  ?: ($config['max_per_hour'] ?? 20));
+$config['max_msg_length'] = (int)(getenv('MAX_MSG_LEN') ?: ($config['max_msg_length'] ?? 500));
 
 // ─── Allowed origins ─────────────────────────────────────────────────────────
 $allowedOrigins = array_values(array_filter([

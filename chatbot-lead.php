@@ -1,6 +1,10 @@
 <?php
 // EverBot lead capture endpoint — stores visitor name/email/phone collected by the chat widget.
-$config = require __DIR__ . '/chatbot-config.php';
+$config = file_exists(__DIR__ . '/chatbot-config.php')
+    ? require __DIR__ . '/chatbot-config.php'
+    : [];
+$config['lead_notify_email'] = getenv('LEAD_NOTIFY_EMAIL') ?: ($config['lead_notify_email'] ?? '');
+$config['log_path'] = (getenv('LEADS_LOG_DIR') ?: dirname(__DIR__ . '/chatbot-leads.log')) . '/chatbot-leads.log';
 
 $allowedOrigins = array_values(array_filter([
     'https://evertechme.com',
